@@ -2,23 +2,26 @@
 var express = require("express");
 var app = express();
 
+var bodyParser = require("body-parser");
+
+//const { parse } = require("querystring");
+
 //var server = app.listen(3033);
 
 var PORT = 3000;
 
+app.use(express.static("public"));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
 //Body Parse
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
 app.use(bodyParser.json());
-
-
-
-
 
 require("./routes/apiRoutes.js")(app);
 require("./routes/htmlRoutes.js")(app);

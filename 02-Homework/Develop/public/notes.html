@@ -34,28 +34,51 @@
           </div>
         </div>
         <div class="col-8">
-          <form action="http://localhost:3000/notes" method="POST">
+          <input
+            class="note-title"
+            placeholder="Note Title"
+            maxlength="28"
+            type="text"
+            name="title"
+          />
+          <textarea
+            name="text"
+            class="note-textarea"
+            placeholder="Note Text"
+          ></textarea>
+
+          <!--
+        <form action="http://localhost:3000/notes" method="POST">
             <input
               class="note-title"
               name="title"
+              id="title"
               placeholder="Note Title"
               maxlength="28"
             />
             <input
+
+
               class="note-title"
               name="text"
+              id="text"
               placeholder="Note text"
               maxlength="28"
             />
             <button type="submit">Submit</button>
-
-
-
           </form>
-          <div id = "notesDisplay">
-            
-          </div>
-          <!-- <textarea class="note-textarea" placeholder="Note Text"></textarea>
+
+         
+          <form id="myForm" method="post">
+            Number 1:
+            <input type="number" id="numa" name="numa" step="any" /><br />
+            Number 2:
+            <input type="number" id="numb" name="numb" step="any" /><br />
+            <input type="number" id="answer" name="answer" readonly />
+            <input type="submit" value="Submit" />
+          </form>
+          <div id="result"></div>
+          <textarea class="note-textarea" placeholder="Note Text"></textarea>
         
           -->
         </div>
