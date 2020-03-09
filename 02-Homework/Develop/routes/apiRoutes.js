@@ -2,6 +2,7 @@ var notesData = require("../db/db.json");
 
 const { parse } = require("querystring");
 const fs = require("fs");
+var path = require("path");
 
 module.exports = function(app) {
   // API GET Requests
@@ -74,7 +75,7 @@ module.exports = function(app) {
         const newNote = parse(body);
 
         if (Object.keys(newNote).length !== 0) {
-          fs.readFile(__dirname + "./db/db.json", "utf-8", (err, data) => {
+          fs.readFile(__dirname + notesData, "utf-8", (err, data) => {
             if (err) {
               throw err;
             }
@@ -84,14 +85,10 @@ module.exports = function(app) {
             newNote.id = data.length;
             data.push(newNote);
 
-            fs.writeFile(
-              __dirname + "./db/db.json",
-              JSON.stringify(data),
-              err => {
-                if (err) throw err;
-                console.log("Success.");
-              }
-            );
+            fs.writeFile(__dirname + notesData, JSON.stringify(data), err => {
+              if (err) throw err;
+              console.log("Success.");
+            });
           });
           res.send(newNote);
         } else {
