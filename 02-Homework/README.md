@@ -6,6 +6,8 @@ This application can be used to write, save, and delete notes. The application w
 
 The project uses HTML routes, using GET and POST, to retrieve note information, which is stored in the db.JSON file. On the HTML, a new note is returned to the page.
 
+The web page is run by entering "server.js" into the terminal.
+
 This is the USER story:
 
 ## User Story

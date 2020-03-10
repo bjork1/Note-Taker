@@ -1,3 +1,5 @@
+//Variables to require packages; express, fs, querystring
+
 const express = require("express");
 const fs = require("fs");
 const { parse } = require("querystring");
@@ -6,7 +8,14 @@ const app = express();
 
 app.use(express.static("public"));
 
+//Uses PORT 3000
+
 var PORT = process.env.PORT || 3000;
+
+//Sends file information from html pages to the server
+//"__dirname" returns to directory for absolute path
+//200 is success status code
+//Req is request object, res is response object, next is next middleware function
 
 app.get("/", (req, res, next) => {
   res.status(200).sendFile(__dirname + "/public/index.html");
@@ -15,6 +24,9 @@ app.get("/", (req, res, next) => {
 app.get("/notes", (req, res, next) => {
   res.status(200).sendFile(__dirname + "/public/notes.html");
 });
+
+//Reads db.json file and displays information to /api/notess page
+//Data is parsed using JSON.parse
 
 app.get("/api/notes", (req, res, next) => {
   try {
@@ -92,5 +104,3 @@ app.delete("/api/notes/:id", (req, res, next) => {
 });
 
 app.listen(PORT, () => console.log(`Server listening on PORT ${PORT}`));
-
-
